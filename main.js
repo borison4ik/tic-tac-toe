@@ -6,6 +6,9 @@ window.addEventListener('load', function () {
   const stepView = document.getElementById('step');
   const playerView = document.getElementById('player');
   const statView = document.getElementById('stat');
+  const popupTitlwView = document.getElementById('popupTitle');
+  const popup = document.querySelector('.popup');
+  const closePopup = document.getElementById('closePopup');
 
   // получаю колисество клеток в поле, объявляю массив для хранения матрицы поля, обьявляю первого игрока 'x' и остальные переменные
   let q = input.value;
@@ -23,6 +26,13 @@ window.addEventListener('load', function () {
 
   console.log(map);
 
+  // слушатель на кнопку закрытия popup
+  closePopup.addEventListener('click', function () {
+    if (popup.classList.contains('open')) {
+      popup.classList.remove('open');
+    }
+  });
+
   // функция начала новой игры
   function newGame() {
     // объявляю переменные новой игры
@@ -33,8 +43,9 @@ window.addEventListener('load', function () {
     makeMap(q);
     // вызываю функцию отририсовки игрового поля
     drawMap(map);
-
+    // добавляю ход
     stepView.innerHTML = ++step;
+    // вывожу активного игрока
     playerView.innerHTML = player;
 
     // добавляю лисенер клика по игровому полю и передаю в него фупкцию следующего хода игры gameStep, 1 клик - 1 ход
@@ -45,9 +56,13 @@ window.addEventListener('load', function () {
   // вывожу победителя и снимаю лисенер с игрового поля, ходы больше сделать нельзя
   function stopGame() {
     area.removeEventListener('click', gameStep);
+    // обновляю массив статистики
     updateStat(player, step, winner);
+    // отрисосываю статистику в браузере
     drawStat(games);
-    alert(`winner ${player}`);
+    // передаю победителя в функцию popup для вывода победителя
+    let popupTitle = `победил игрок: ${player}`;
+    showPopup(popupTitle, 'Ура');
   }
 
   // функция хода игры
@@ -73,11 +88,12 @@ window.addEventListener('load', function () {
       }
       // если победителя нет передаю ход другому игроку
       player = player === 'x' ? 'o' : 'x';
+      // обновляю информацию хода игры
       playerView.innerHTML = player;
       stepView.innerHTML = ++step;
     } else {
       // вывожу сообщение о том что нажата ячейка в которую уже походили
-      alert('ячейка занята');
+      showPopup('ячейка занята', '=(');
     }
     console.log(map);
   }
@@ -173,6 +189,7 @@ window.addEventListener('load', function () {
     }
   }
 
+  // создаю массив объектов с данными о прошедшей игре для вывода статистики игр
   function updateStat(player, step, winner) {
     if (winner) {
       const game = {
@@ -185,6 +202,7 @@ window.addEventListener('load', function () {
     console.log(games);
   }
 
+  // вывожу статистику из массива игр
   function drawStat(games) {
     statView.innerHTML = '';
     if (games.length) {
@@ -195,6 +213,12 @@ window.addEventListener('load', function () {
         statView.appendChild(li);
       }
     }
+  }
+  // открыть всплывающее окно с информацией
+  function showPopup(title, textBtn) {
+    popupTitlwView.innerHTML = title;
+    closePopup.innerHTML = textBtn;
+    popup.classList.add('open');
   }
 
   // функция обновления данных в матрице принимает индексы строки и столбца
