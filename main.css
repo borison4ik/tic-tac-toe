@@ -110,3 +110,34 @@ label {
   transform: translateX(10);
   margin-bottom: 10px;
 }
+
+.popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #353535b5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.popup.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup.open .popup-body {
+  transform: translateX(0);
+}
+
+.popup-body {
+  max-width: 320px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  transform: translateY(30px);
+}

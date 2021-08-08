@@ -6,6 +6,9 @@ window.addEventListener('load', function () {
   const stepView = document.getElementById('step');
   const playerView = document.getElementById('player');
   const statView = document.getElementById('stat');
+  const winnerView = document.getElementById('winner');
+  const popup = document.querySelector('.popup');
+  const closePopup = document.getElementById('closePopup');
 
   // получаю колисество клеток в поле, объявляю массив для хранения матрицы поля, обьявляю первого игрока 'x' и остальные переменные
   let q = input.value;
@@ -22,6 +25,12 @@ window.addEventListener('load', function () {
   reset.addEventListener('click', newGame);
 
   console.log(map);
+
+  closePopup.addEventListener('click', function () {
+    if (popup.classList.contains('open')) {
+      popup.classList.remove('open');
+    }
+  });
 
   // функция начала новой игры
   function newGame() {
@@ -47,7 +56,8 @@ window.addEventListener('load', function () {
     area.removeEventListener('click', gameStep);
     updateStat(player, step, winner);
     drawStat(games);
-    alert(`winner ${player}`);
+    winnerView.innerHTML = `победил игрок: ${player}`;
+    popup.classList.add('open');
   }
 
   // функция хода игры
