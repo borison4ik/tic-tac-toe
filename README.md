@@ -1,2 +1,2 @@
 # tic-tac-toe
-## Игра крестики нолики на Jawa Script
+## Игра крестики нолики на JavaScript
