@@ -1,63 +1,46 @@
 * {
   padding: 0;
   margin: 0;
+  font-family: Arial, sans-serif;
+  color: #2196f3;
   list-style: none;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   display: block;
+  transition: all 0.5s ease-in-out;
 }
 
 .wrapper {
   height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .app {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 10px;
-  background-color: #d3d3d3;
+  background-color: #d8d8d8;
+  border-radius: 5px;
+}
+
+.game {
+  display: flex;
 }
 
 .area {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .cell {
   width: 30px;
   height: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   border: 1px solid #5c5c5c;
   font-size: 20px;
   font-family: Arial, san-serif;
@@ -72,10 +55,10 @@
 .btn {
   background: #36a314;
   border: none;
-  padding: 5px 10px;
-  border-radius: 0;
+  padding: 10px 15px;
+  border-radius: 5px;
   color: #fff;
-  margin-top: 10px;
+  margin-top: 20px;
   width: 100%;
   cursor: pointer;
 }
@@ -88,19 +71,42 @@
   background: #54bb34;
 }
 
+label {
+  font-size: 16px;
+  font-weight: 700;
+}
+
 .input {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   outline: none;
   width: 100%;
+  padding: 5px 10px;
+  color: #5d5d5d;
 }
 
 .title {
   margin-bottom: 10px;
   width: 100%;
   padding: 5px 0;
+  font-size: 22px;
+  color: #2196f3;
 }
 
 .title span {
   display: inline-block;
 }
-/*# sourceMappingURL=main.css.map */
+
+.stat {
+  margin-left: 20px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.stat-item {
+  color: #2196f3;
+  background-color: #d8d8d8;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transform: translateX(10);
+  margin-bottom: 10px;
+}
